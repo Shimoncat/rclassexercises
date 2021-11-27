@@ -1,0 +1,25 @@
+---
+title: "Homework 5"
+author: "Kimberly Kreitner"
+date: "11/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+``` {r packages}
+library(tidyverse)
+library(readr)
+library(dplyr)
+library(stringr)
+```
+
+
+``` {r data}
+# setwd("~/Google Drive (kreitnerki@utexas.edu)/PHD/Fall2021/R programming/homework/rclassexercises")
+homicide_data <- read_csv("data/homicide-data.csv")
+```
+
