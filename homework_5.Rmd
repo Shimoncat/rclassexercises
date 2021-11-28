@@ -30,3 +30,9 @@ homicide_data <- read_csv("data/homicide-data.csv")
 library(sf)
 library(tigris)
 ```
+
+# City Selected is Baltimore
+``` {r select city}
+homicide_data <- homicide_data %>%
+  mutate(city_name = paste(city, ",", state))
+```
