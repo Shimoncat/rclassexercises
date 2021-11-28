@@ -2,7 +2,10 @@
 title: "Homework 5"
 author: "Kimberly Kreitner"
 date: "11/27/2021"
-output: html_document
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -31,7 +34,7 @@ library(sf)
 library(tigris)
 ```
 
-# City Selected is Baltimore
+## City Selected is Baltimore
 ``` {r select city}
 homicide_data <- homicide_data %>%
   mutate(city_name = paste(city, ",", state)) %>%
@@ -39,4 +42,12 @@ homicide_data <- homicide_data %>%
   mutate(disposition_new = disposition %in% c("Open/No arrest",
                                               "Closed without arrest")) %>%
   mutate(disposition_num = as.integer(disposition_new))
+head(homicide_data)
+```
+
+## Baltimore, MD Map
+``` {r map attempt}
+library(ggplot2)
+ggplot() +
+  geom_sf(data = homicide_data)
 ```
