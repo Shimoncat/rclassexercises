@@ -48,6 +48,7 @@ head(homicide_data)
 ## Baltimore, MD Map
 ``` {r map attempt}
 library(ggplot2)
-ggplot() +
-  geom_sf(data = homicide_data)
+baltimore <- homicide_data(city_name = "Baltimore, MD", cb = TRUE, class = "sf")
+#ggplot() +
+ # geom_sf(data = homicide_data)
 ```
