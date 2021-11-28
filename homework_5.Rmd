@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+options(tigris_use_cache = TRUE)
 ```
 
 
@@ -23,3 +24,9 @@ library(stringr)
 homicide_data <- read_csv("data/homicide-data.csv")
 ```
 
+# Choice 1
+
+``` {r choice 1 setup}
+library(sf)
+library(tigris)
+```
