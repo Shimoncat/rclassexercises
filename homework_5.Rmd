@@ -34,5 +34,6 @@ library(tigris)
 # City Selected is Baltimore
 ``` {r select city}
 homicide_data <- homicide_data %>%
-  mutate(city_name = paste(city, ",", state))
+  mutate(city_name = paste(city, ",", state)) %>%
+  filter(city_name == "Baltimore , MD")
 ```
