@@ -51,6 +51,6 @@ library(ggplot2)
 baltimore <- st_as_sf(homicide_data, coords = c("lon", "lat"))%>%
   st_set_crs(4269)
 baltimore %>% slice(1:3)
-#ggplot() +
- # geom_sf(data = homicide_data)
+ggplot() +
+ geom_sf(data = baltimore, color = "red")
 ```
