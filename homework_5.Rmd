@@ -35,5 +35,8 @@ library(tigris)
 ``` {r select city}
 homicide_data <- homicide_data %>%
   mutate(city_name = paste(city, ",", state)) %>%
-  filter(city_name == "Baltimore , MD")
+  filter(city_name == "Baltimore , MD") %>%
+  mutate(disposition_new = disposition %in% c("Open/No arrest",
+                                              "Closed without arrest")) %>%
+  mutate(disposition_num = as.integer(disposition_new))
 ```
