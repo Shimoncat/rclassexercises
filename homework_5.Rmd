@@ -61,13 +61,15 @@ b_homicides %>% slice(1:3)
 
 md_counties <- counties(state = "MD", cb = TRUE, class = "sf")
 baltimore <- md_counties %>%
-  filter(NAME == "Baltimore")
+  filter(NAME == "Baltimore", COUNTYFP == "510")
+b_blocks <- blocks("MD", 510)
+plot(b_blocks)
 class(md_counties)
 class(baltimore)
 ```
 
 ``` {r baltimorehomicide map}
 ggplot()+
-  geom_sf(data = baltimore) +
+  geom_sf(data = b_blocks) +
   geom_sf(data = b_homicides, color = "red")
 ```
