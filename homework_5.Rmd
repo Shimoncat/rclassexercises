@@ -50,12 +50,14 @@ head(homicide_data)
 library(ggplot2)
 b_homicides <- st_as_sf(homicide_data, coords = c("lon", "lat"))%>%
   st_set_crs(4269)
-baltimore %>% slice(1:3)
-ggplot() +
- geom_sf(data = b_homicides, color = "red")
+b_homicides %>% slice(1:3)
 ```
 
-``` {r baltimore map}
+``` {r homicide specifics}
+
+```
+
+``` {r baltimore}
 
 md_counties <- counties(state = "MD", cb = TRUE, class = "sf")
 baltimore <- md_counties %>%
