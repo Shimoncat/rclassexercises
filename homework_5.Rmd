@@ -3,9 +3,9 @@ title: "Homework 5"
 author: "Kimberly Kreitner"
 date: "11/27/2021"
 output:
-  word_document: default
-  html_document: default
   pdf_document: default
+  html_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -58,5 +58,7 @@ ggplot() +
 ``` {r baltimore map}
 
 md_counties <- counties(state = "MD", cb = TRUE, class = "sf")
+baltimore <- md_counties %>%
+  filter(NAME == "Baltimore")
 class(md_counties)
 ```
