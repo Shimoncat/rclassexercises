@@ -77,6 +77,8 @@ class(baltimore)
 ``` {r baltimorehomicide map}
 ggplot()+
   geom_sf(data = b_blocks) +
-  geom_sf(data = top_race, aes(color = victim_race)) +
-  facet_grid(~ disposition_num)
+  geom_sf(data = top_race, aes(color = victim_race) +
+  facet_grid(~ disposition_num) +
+  theme_classic() +
+  ggtitle("Homicide Events in Baltimore, Maryland")
 ```
