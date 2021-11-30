@@ -8,8 +8,9 @@ output:
   word_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup global_options}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      warning = FALSE)
 options(tigris_use_cache = TRUE)
 ```
 
@@ -60,7 +61,10 @@ table(homicide_data$victim_race)
 top_race <- homicide_data %>%
   filter(victim_race %in% c("Black", "Hispanic", "White")) %>%
   st_as_sf(coords = c("lon", "lat"))%>%
-  st_set_crs(4269)
+  st_set_crs(4269) %>%
+  mutate(disposition_num = factor(disposition_num, 
+                                  levels = c(0, 1),
+                                  labels = c("Unsolved", "Solved")))
 ```
 
 ``` {r baltimore}
@@ -77,9 +81,8 @@ class(baltimore)
 ``` {r baltimorehomicide map}
 ggplot()+
   geom_sf(data = b_blocks) +
-  geom_sf(data = top_race, aes(color = victim_race)) +
-  scale_color_viridis(name = "Race of Victim", discrete = TRUE,
-                      options = "B") +
+  geom_sf(data = top_race, aes(color = victim_race)) + 
+  labs(color = "Race of Victim")+
   facet_grid(~ disposition_num) +
   theme_classic() +
   ggtitle("Homicide Events in Baltimore, Maryland")
